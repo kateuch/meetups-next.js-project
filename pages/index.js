@@ -1,5 +1,6 @@
 import MeetupList from "../components/meetups/MeetupList";
 import { MongoClient} from "mongodb";
+import Head from 'next/head';
 
 
 const Img = require("../public/default.jpg");
@@ -23,7 +24,15 @@ const Img = require("../public/default.jpg");
 // ];
 
 export default function HomePage(props) {
-  return <MeetupList meetups={props.meetups} />;
+  return (
+    <>
+    <Head>
+      <title>Demo React Meetups</title>
+      <meta name='description' content='List of React Meetups around the world' />
+    </Head>
+   <MeetupList meetups={props.meetups} />
+  </>
+  )
 }
 
 export async function getStaticProps(context) {
